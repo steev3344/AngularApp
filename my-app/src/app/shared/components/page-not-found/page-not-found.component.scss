@@ -1,0 +1,15 @@
+button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 0;
+  background: none;
+  .mat-icon {
+    font-size: 60px;
+    height: unset;
+    width: unset;
+  }
+}
+.mat-card-title {
+  color: #5a5a5a;
+}

@@ -1,1 +1,36 @@
-<p>login-page works!</p>
+<!-- Login Container -->
+<div class="wrapper">
+  <!-- Login form -->
+  <form (ngSubmit)="actionSubmit(loginForm)" #loginForm="ngForm">
+      <mat-card>
+          <mat-card-content>
+              <!-- Field Username -->
+              <div class="block">
+              <mat-form-field appearance="outline">
+                  <input matInput placeholder="Email" type="email" name="email" #username="ngModel" required
+                  [(ngModel)]="userModel.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                  <mat-error *ngIf="username.invalid && username.errors?.required">Username is required</mat-error>
+                  <mat-error *ngIf="username.invalid && username.errors?.pattern">Invalid email</mat-error>
+              </mat-form-field>
+              <!-- Field password -->
+              <mat-form-field appearance="outline">
+                  <input matInput placeholder="Password" [type]="passwordViewToggle ? 'password' : 'text'"
+                  name="password" #password="ngModel" required minlength="6" [(ngModel)]="userModel.password">
+                  <mat-error *ngIf="password.invalid && password.errors?.required">Password is required</mat-error>
+                  <mat-error *ngIf="password.invalid && password.errors?.minlength">Invalid password</mat-error>
+                  <button type="button" mat-icon-button matSuffix (click)="passwordViewToggle = !passwordViewToggle"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passwordViewToggle">
+                    <mat-icon>{{passwordViewToggle ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+              </mat-form-field>
+          </div>
+          </mat-card-content>
+          <!-- Login actions container -->
+          <mat-card-actions>
+              <a routerLink="vehicle/admin/forgot-password" routerLinkActive="active" class="forget-pwd">forgot
+                  password</a>
+              <button mat-raised-button color='primary' [disabled]="loginForm.invalid" type="submit">Login</button>
+          </mat-card-actions>
+      </mat-card>
+  </form>
+</div>

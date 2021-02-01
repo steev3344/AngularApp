@@ -1,0 +1,23 @@
+<div class="dialog">
+    <div class="{{data.theme}}">
+        <mat-dialog-content class="clearfix">
+            <i class="material-icons">{{data.icon}}</i>
+            <p [innerHTML]="data.message"></p>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <div class="button-sec">
+                <button mat-button align="left" *ngIf="data.actionNeutral !== ''"
+                    [mat-dialog-close]="0">{{data.actionNeutral}}</button>
+                <button mat-stroked-button align="right" color="primary" *ngIf="data.actionNegative !== ''"
+                    [mat-dialog-close]="2">{{data.actionNegative}}</button>
+                <button mat-raised-button align="right" color="primary" *ngIf="data.actionPositive !== ''"
+                    [mat-dialog-close]="1" autofocus>{{data.actionPositive}}</button>
+            </div>
+
+
+            <button mat-button class="close-btn" (click)="onNoClick()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-dialog-actions>
+    </div>
+</div>
