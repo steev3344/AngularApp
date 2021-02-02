@@ -1,0 +1,22 @@
+.dialog {
+  position: relative;
+}
+mat-dialog-actions button.close-btn {
+  position: absolute;
+  right: -15px;
+  top: -18px;
+}
+
+/* error */
+
+.alert-wrapper.error-wrapper {
+  color: #721c24;
+}
+.error-wrapper button i {
+  color: #721c24;
+}
+.button-sec {
+  display: block;
+  width: 100%;
+  text-align: right;
+}
