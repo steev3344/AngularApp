@@ -1,0 +1,28 @@
+.detail-card {
+  text-align: center;
+}
+
+.detail-card mat-card-content {
+  padding: 60px 0;
+}
+.detail-card mat-icon {
+  font-size: 36px;
+  opacity: 0.3;
+  width: 36px;
+  height: 36px;
+}
+.detail-card p {
+  font-size: 24px;
+  max-width: 80%;
+  display: block;
+  margin: 15px auto 15px auto;
+  opacity: 0.75;
+}
+@media screen and (min-width: 568px) {
+  .detail-card mat-icon {
+    font-size: 96px;
+    width: 96px;
+    height: 96px;
+    opacity: 0.3;
+  }
+}
