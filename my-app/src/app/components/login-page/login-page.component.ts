@@ -31,9 +31,9 @@ export class LoginPageComponent implements OnInit {
   actionSubmit(loginForm: NgForm) {
      if (this.userModel.email && this.userModel.password) {
        this.userService.login(this.userModel).subscribe(res => {
-         if (res._id) {
+         if (res.token) {
         this.alertService.success(`${res.username} logged in Successfully`);
-        this.authService.sendToken(res._id);
+        // this.authService.sendToken(res._id);
         this.toHome();
       } else {
         this.alertService.error(`Username or Password is Incorrect`);
@@ -47,7 +47,7 @@ export class LoginPageComponent implements OnInit {
    * navigate to home page
    */
   toHome() {
-    this.router.navigate(['vehicle/home']);
+    this.router.navigate(['home']);
   }
 
 }

@@ -11,9 +11,12 @@ export const environment = {
     v: '/v1',
   },
   services: {
-    user: '/user'
-  }
-
+    user: '/user/login',
+    register:'/user/register',
+    product:'/product/create',
+    productGet:'/product/all'
+  },
+  ApiHost:'http://127.0.0.1:3000/api/v1'
 
 };
 

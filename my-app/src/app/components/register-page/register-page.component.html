@@ -1,33 +1,53 @@
 
- 
+ <div class=wrapper>
+   <form (ngSubmit)="saveForm()" #loginForm="ngForm">
 <mat-card  class="example-card">
-    <section class="center">
+  <mat-card-content>
     <div>
     <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput>
+        <input matInput placeholder="Username"
+        type="text"
+        name="username"
+        #username="ngModel"
+        [(ngModel)]="userModel.username"
+        required
+        >
       </mat-form-field></div>
       <div>
         <mat-form-field appearance="outline">
-            <mat-label>Email-Id</mat-label>
-            <input matInput>
+            <input matInput placeholder="Email" type="email" name="email" #useremail="ngModel" required
+            [(ngModel)]="userModel.email">
           </mat-form-field></div>
           <div>
             <mat-form-field appearance="outline">
-                <mat-label>Phone Number</mat-label>
-                <input matInput>
+              <input matInput placeholder="Phone Number"
+              type="number"
+              name="phonenumber"
+              #phonenumber="ngModel"
+              [(ngModel)]="userModel.phonenumber"
+              required
+              >
               </mat-form-field></div>
               <div>
                 <mat-form-field appearance="outline">
-                    <mat-label>Choose New Password</mat-label>
-                    <input matInput>
+                    <input matInput placeholder="Password"
+                    type="password"
+                    name="password"
+                    #password="ngModel"
+                    [(ngModel)]="userModel.password"
+                    required>
                   </mat-form-field></div>
       <div>
       <mat-form-field appearance="outline">
         <mat-label>Confirm New Password</mat-label>
         <input matInput>
       </mat-form-field></div>
+    </mat-card-content>
+    <mat-card-actions>
       <div>
-        <button mat-button color="black">REGISTER</button></div>
-    </section>
+        <button mat-button color="black">REGISTER</button></div></mat-card-actions>
 </mat-card>
+
+</form>
+</div>
