@@ -23,18 +23,10 @@ export class HomePageComponent implements OnInit {
     
 
   ngOnInit(): void {
-    this.productID = this.route.snapshot.paramMap.get('productID');
-    if (this.productID != null) {
-      this.get(this.productID);
-    }
 
   
   }
-  get(id: string) {
-    this.productService.getOne(id).subscribe(res => {
-      this.productModel = res;
-    });
-  }
+
 
   saveForm() {
     this.productService.createOrUpdate(this.productModel).subscribe(res => {

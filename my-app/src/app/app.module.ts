@@ -10,6 +10,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpErrorHandler } from './network/http-error-handler.service';
 import { ListProductComponent } from './components/list-product/list-product.component';
+import { EditComponent } from './components/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ListProductComponent } from './components/list-product/list-product.com
     LoginPageComponent,
     RegisterPageComponent,
     HomePageComponent,
-    ListProductComponent
+    ListProductComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
