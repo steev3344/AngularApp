@@ -57,6 +57,6 @@ export class ListProductComponent implements OnInit {
     });
   }
   editModel(rowObject: ProductModel) {
-    this.router.navigate(['product/edit/', rowObject._id]);
+    this.router.navigate(['product', rowObject._id]);
   }
 }

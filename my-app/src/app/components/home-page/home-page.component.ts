@@ -32,7 +32,8 @@ export class HomePageComponent implements OnInit {
   }
   get(id: string) {
     this.productService.getOne(id).subscribe(res => {
-      this.productModel = res;
+      console.log(res,'this is data')
+      //this.productModel = res;
     });
   }
 
@@ -40,10 +41,10 @@ export class HomePageComponent implements OnInit {
     this.productService.createOrUpdate(this.productModel).subscribe(res => {
       if (res && res._id) {
         this.alertService.success(
-          `Vehicle Brand ${this.productModel._id ? 'Updated' : 'Added'} successfully`, 'BrandAddorUpdate'
+          `${this.productModel._id ? 'Updated' : 'Added'} successfully`
         );
-        const alertListener = this.alertService.getAction('BrandAddorUpdate').subscribe((alertActionModel: AlertActionModel) => {
-          if (alertActionModel.actionId === 1 && alertActionModel.functionName === 'BrandAddorUpdate') {
+        const alertListener = this.alertService.getAction('AddorUpdate').subscribe((alertActionModel: AlertActionModel) => {
+          if (alertActionModel.actionId === 1 && alertActionModel.functionName === 'AddorUpdate') {
             alertListener.unsubscribe();
             this.action()
           
