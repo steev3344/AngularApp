@@ -11,22 +11,32 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductService {
-
   private handleError: HandleError;
-  private urlCreate: string;
+  private url: string;
   private urlGetAll: string;
   private urlUpdate:string;
   private urlDelete:string;
   private urlShow:string;
 
   constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandler) {
-
-    this.urlCreate =`${environment.ApiHost}/product/create`;
-    this.urlGetAll =`${environment.ApiHost}/product/all`;
+    this.url =
+    environment.api.host +
+    environment.api.port +
+    environment.api.api +
+    environment.api.v +
+    environment.services.product;
+    this.urlGetAll =
+    environment.api.host +
+    environment.api.port +
+    environment.api.api +
+    environment.api.v +
+    environment.services.productGet;
     this.urlDelete= `${environment.ApiHost}/product`;
     this.urlShow=`${environment.ApiHost}/product`;
     this.urlUpdate=`${environment.ApiHost}/product/update`;
     this.handleError = httpErrorHandler.createHandleError('ProductService');
+
+
 }
 
  /**
@@ -38,7 +48,6 @@ export class ProductService {
       map(res => res.data),
       catchError(this.handleError('get', null))
     );
-    
   }
 
   /**
@@ -52,25 +61,25 @@ export class ProductService {
     );
   }
 
+
  delete(id: string): Observable<ProductModel> {
    const url = `${this.urlDelete}/${id}`;
    return this.http.delete<ApiResponseModel<ProductModel>>(url).pipe(catchError(this.handleError('delete', null))
    );
  }
 
-
-public createOrUpdate(productModel: ProductModel) {
-  if (productModel._id) {
-    return this.update(productModel);
+public createOrUpdate(brandModel: ProductModel) {
+  if (brandModel._id) {
+    return this.update(brandModel);
   } else {
-    return this.create(productModel);
+    return this.create(brandModel);
   }
 }
 
 
 create(productModel: ProductModel): Observable<ProductModel> {
   const inputData = productModel
-  return this.http.post<ApiResponseModel<ProductModel>>(this.urlCreate, inputData).pipe(
+  return this.http.post<ApiResponseModel<ProductModel>>(this.url, inputData).pipe(
     map(res => res.data),
     catchError(this.handleError('create', null))
   );
