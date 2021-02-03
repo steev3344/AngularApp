@@ -1,22 +1,22 @@
 <!--mat-toolbar is a container for headers, titles, or actions.-->
 <mat-toolbar class="header"><div class="center">Products</div></mat-toolbar>
-<!--mat form field for filtering model data items-->
+<!--mat form field for filtering  data items-->
 <mat-form-field class="field-search" appearance="outline">
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. swift" />
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Biriyani" />
 </mat-form-field>
-<!--mat-table for binding model data-->
+<!--mat-table for binding data-->
 <table
   mat-table
   [dataSource]="dataSource"
   class="mat-elevation-z8 m-60"
   matSort
 >
-  <!--container for displaying model id-->
+  <!--container for displaying  id-->
   <ng-container matColumnDef="_id">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Sl no</th>
     <td mat-cell *matCellDef="let row; index as i">{{ i + 1 }}</td>
   </ng-container>
-  <!--container for displaying model name-->
+  <!--container for displaying  name-->
   <ng-container matColumnDef="productname">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Name</th>
     <td mat-cell *matCellDef="let products">{{ products.productname }}</td>

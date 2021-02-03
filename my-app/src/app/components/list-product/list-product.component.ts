@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductModel} from 'app/models/product';
 import { ProductService } from 'app/services/product.service';
 import { AlertService } from 'app/shared/services/alert/alert.service';
-import { AlertActionModel } from 'app/shared/models/alert-action-model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -13,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-product.component.css']
 })
 export class ListProductComponent implements OnInit {
+
   products: ProductModel[];
   dataSource: MatTableDataSource<ProductModel>;
   displayedColumns: string[] = ['productname', 'price', 'action'];
@@ -25,9 +25,11 @@ export class ListProductComponent implements OnInit {
     private productService: ProductService,
     private alertService:AlertService
   ) { }
+
   productModel:ProductModel = {};
+  
   ngOnInit(): void {
-    this.getModels()
+    this.getProducts()
   }
 
   applyFilter(event: Event) {
@@ -35,11 +37,10 @@ export class ListProductComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  //get All
     /**
-   * function will perform on form load to fetch Model Data from API
+   * function will fetch Products from API
    */
-  getModels() 
+  getProducts() 
   {
       this.productService.getAll().subscribe(res => {
         this.products = res;
@@ -48,7 +49,10 @@ export class ListProductComponent implements OnInit {
         this.dataSource.sort = this.sort;
       });
     }
-  
+
+  /**
+   * function For Deleting Products from API
+   */
   deleteModel(rowObject: ProductModel, event: Event) {
     event.stopPropagation();
     this.productService.delete(rowObject._id).subscribe(res => {
@@ -56,6 +60,10 @@ export class ListProductComponent implements OnInit {
       this.alertService.success('Deleted Successfully');
     });
   }
+
+  /**
+   * function For Navigating to Edit Page
+   */
   editModel(rowObject: ProductModel) {
     this.router.navigate(['product/edit/', rowObject._id]);
   }

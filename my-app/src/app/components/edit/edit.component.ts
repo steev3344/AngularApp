@@ -5,9 +5,6 @@ import { AlertService } from 'app/shared/services/alert/alert.service';
 import { AlertActionModel } from 'app/shared/models/alert-action-model';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
-
-
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -22,12 +19,17 @@ export class EditComponent  implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    //this will get Data according to the ID From Product Service 
     this.route.params.subscribe(params => {
       this.productService.getOne(params['id']).subscribe(res => {
         this.productModel = res;
     });
   });
 }
+
+ /**
+   * function For Updating Data using ID
+   */
 saveForm() {
   this.productService.createOrUpdate(this.productModel).subscribe(res => {
     if (res && res._id) {
@@ -45,6 +47,9 @@ saveForm() {
   });
 }
 
+ /**
+   * function For Navigating to Product List Page
+   */
 public action() {
   this.router.navigateByUrl('product');
 }

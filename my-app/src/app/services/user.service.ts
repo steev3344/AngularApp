@@ -12,42 +12,40 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class UserService {
   private handleError: HandleError;
-  private url: string;
-  private url2:string;
+  private urlLogin: string;
+  private urlRegister:string;
 
   constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandler) {
-    this.url =
-    environment.api.host +
-    environment.api.port +
-    environment.api.api +
-    environment.api.v +
-    environment.services.user;
+    this.urlLogin =`${environment.ApiHost}/user/login`;
+    this.urlRegister =`${environment.ApiHost}/user/register`;
     this.handleError = httpErrorHandler.createHandleError('UserService');
-    this.url2 =
-    environment.api.host +
-    environment.api.port +
-    environment.api.api +
-    environment.api.v +
-    environment.services.register;
-    this.handleError = httpErrorHandler.createHandleError('UserService');
-    
-
 }
-
+/**
+ * 
+ * @param userModel 
+ *  Function for Performing Login Action For User
+ */
 login(userModel: UserModel): Observable<UserModel> {
-  const url = `${this.url}`;
+  const url = `${this.urlLogin}`;
   const inputData = userModel;
   return this.http.post<ApiResponseModel<UserModel>>(url, inputData).pipe(
     map(res => res.data),
     catchError(this.handleError('login', null))
   );
 }
+
+/**
+ * 
+ * @param userModel 
+ *  Function for Creating New User
+ */
+
 create(userModel:  UserModel): Observable< UserModel> {
   const inputData = 
   userModel
   ;
   return this.http
-    .post<ApiResponseModel< UserModel>>(this.url2, inputData)
+    .post<ApiResponseModel< UserModel>>(this.urlRegister, inputData)
     .pipe(
       map((res) => res.data),
       catchError(this.handleError('create', null))
