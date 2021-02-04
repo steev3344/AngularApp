@@ -19,7 +19,7 @@ import { EditComponent } from './components/edit/edit.component';
     RegisterPageComponent,
     HomePageComponent,
     ListProductComponent,
-    EditComponent
+    EditComponent,
   ],
   imports: [
     BrowserModule,

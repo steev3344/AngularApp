@@ -5,7 +5,6 @@ import { AlertService } from 'app/shared/services/alert/alert.service';
 import { AlertActionModel } from 'app/shared/models/alert-action-model';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',

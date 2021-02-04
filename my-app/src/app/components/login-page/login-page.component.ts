@@ -33,7 +33,7 @@ export class LoginPageComponent implements OnInit {
        this.userService.login(this.userModel).subscribe(res => {
          if (res.token) {
         this.alertService.success(`${res.username} logged in Successfully`);
-        // this.authService.sendToken(res._id);
+        this.authService.sendToken(res._id);
         this.toHome();
       } else {
         this.alertService.error(`Username or Password is Incorrect`);

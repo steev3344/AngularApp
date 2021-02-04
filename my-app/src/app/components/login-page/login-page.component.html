@@ -2,17 +2,19 @@
 <div class="wrapper">
   <!-- Login form -->
   <form (ngSubmit)="actionSubmit(loginForm)" #loginForm="ngForm">
-      <mat-card>
+      <mat-card class="example-card">
           <mat-card-content>
               <!-- Field Username -->
               <div class="block">
+                  <div>
                 <mat-form-field appearance="outline">
                     <input matInput placeholder="Email" type="email" name="email" #username="ngModel" required
                     [(ngModel)]="userModel.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                     <mat-error *ngIf="username.invalid && username.errors?.required">Username is required</mat-error>
                     <mat-error *ngIf="username.invalid && username.errors?.pattern">Invalid email</mat-error>
                 </mat-form-field>
-
+            </div>
+        <div>
               <!-- Field password -->
               <mat-form-field appearance="outline">
                   <input matInput placeholder="Password" [type]="passwordViewToggle ? 'password' : 'text'"
@@ -24,12 +26,13 @@
                     <mat-icon>{{passwordViewToggle ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
               </mat-form-field>
+            </div>
           </div>
           </mat-card-content>
           <!-- Login actions container -->
           <mat-card-actions>
-              <a routerLink="vehicle/admin/forgot-password" routerLinkActive="active" class="forget-pwd">forgot
-                  password</a>
+              <!-- <a routerLink="vehicle/admin/forgot-password" routerLinkActive="active" class="forget-pwd">forgot
+                  password</a> -->
               <button mat-raised-button color='primary' [disabled]="loginForm.invalid" type="submit">Login</button>
           </mat-card-actions>
       </mat-card>
