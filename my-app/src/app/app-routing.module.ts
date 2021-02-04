@@ -10,7 +10,7 @@ import { AuthGuard } from 'app/shared/guard/auth.guard';
 
 
 const routes: Routes = [
-  {path:'',component:LoginPageComponent,canActivate: [AuthGuard]},
+  {path:'',component:LoginPageComponent},
   {path:'register',component:RegisterPageComponent,canActivate: [AuthGuard]},
   {path:'home',component:HomePageComponent,canActivate: [AuthGuard]},
   {path:'product',component:ListProductComponent,canActivate: [AuthGuard]},

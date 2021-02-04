@@ -1,5 +1,9 @@
 
-    <div>
-      <button (click)="logout()" *ngIf="this.authService.isLoggedIn()" type="button" class="btn btn-primary">Logout</button>
-    </div>
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+    (click)="logout()" *ngIf="this.authService.isLoggedIn()" type="button" class="btn btn-primary">
+      <mat-icon>logout</mat-icon> LogOut
+    </button>
+  </mat-toolbar>
+
 <router-outlet></router-outlet>
