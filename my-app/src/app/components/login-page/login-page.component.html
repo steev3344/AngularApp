@@ -7,7 +7,7 @@
               <!-- Field Username -->
               <div class="block">
                   <div>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="center">
                     <input matInput placeholder="Email" type="email" name="email" #username="ngModel" required
                     [(ngModel)]="userModel.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                     <mat-error *ngIf="username.invalid && username.errors?.required">Username is required</mat-error>
@@ -16,7 +16,7 @@
             </div>
         <div>
               <!-- Field password -->
-              <mat-form-field appearance="outline">
+              <mat-form-field appearance="outline" class="center">
                   <input matInput placeholder="Password" [type]="passwordViewToggle ? 'password' : 'text'"
                   name="password" #password="ngModel" required minlength="3" [(ngModel)]="userModel.password">
                   <mat-error *ngIf="password.invalid && password.errors?.required">Password is required</mat-error>
@@ -34,6 +34,7 @@
               <!-- <a routerLink="vehicle/admin/forgot-password" routerLinkActive="active" class="forget-pwd">forgot
                   password</a> -->
               <button mat-raised-button color='primary' [disabled]="loginForm.invalid" type="submit">Login</button>
+              <button mat-raised-button color='primary' type="Button" [routerLink]="['/register']">Register</button>
           </mat-card-actions>
       </mat-card>
   </form>

@@ -1,3 +1,9 @@
 .example-card {
   margin: 200px;
 }
+.center{
+  width: 300px;
+}
+.btn{
+  align-content: center;
+}
